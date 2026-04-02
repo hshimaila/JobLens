@@ -13,6 +13,12 @@
 
 ---
 
+## 🎬 Demo
+
+![JobLens Demo](JobLens_DemoGIF.gif)
+
+---
+
 ## ✨ Features
 
 - 📄 **Resume Parsing** — Extracts text from PDF resumes
