@@ -23,7 +23,7 @@ export default function Dashboard() {
     formData.append("job_description", jd);
 
     try {
-      const res = await fetch("http://127.0.0.1:8000/api/analyze/", {
+      const res = await fetch("https://joblens-backend-zbxo.onrender.com/api/analyze/", {
         method: "POST",
         body: formData,
       });
