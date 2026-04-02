@@ -2,57 +2,33 @@ export default function Suggestions({ suggestions }) {
   if (!suggestions || Object.keys(suggestions).length === 0) return null;
 
   return (
-    <div className="bg-white/80 backdrop-blur-md p-6 rounded-2xl shadow-xl mt-6">
-      <h2 className="text-xl font-bold mb-4">📚 Learning Suggestions</h2>
+    <div className="bg-white border border-gray-100 rounded-2xl p-6 mt-4">
+      <h2 className="text-lg font-bold text-gray-900 mb-5"
+        style={{ fontFamily: "'Syne', sans-serif" }}>
+        Learning Resources
+      </h2>
 
-      {Object.entries(suggestions).map(([skill, data], i) => (
-        <div key={i} className="mb-6">
-
-          {/* Skill Title */}
-          <h3 className="font-semibold text-blue-600 text-lg mb-2">
-            {skill}
-          </h3>
-
-          {/* Videos */}
-          <div className="mb-2">
-            <p className="font-medium">🎥 Videos:</p>
-            <ul className="ml-4 list-disc">
+      <div className="divide-y divide-gray-100">
+        {Object.entries(suggestions).map(([skill, data], i) => (
+          <div key={i} className="py-4 first:pt-0 last:pb-0">
+            <p className="text-sm font-semibold text-blue-600 mb-2">{skill}</p>
+            <div className="flex flex-wrap gap-2">
               {data.videos.map((v, idx) => (
-                <li key={idx}>
-                  <a
-                    href={v.link}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-blue-500 hover:underline"
-                  >
-                    {v.title}
-                  </a>
-                </li>
+                <a key={idx} href={v.link} target="_blank" rel="noopener noreferrer"
+                  className="text-xs px-3 py-1.5 rounded-lg bg-red-50 text-red-700 font-medium hover:bg-red-100 transition-colors">
+                  ▶ {v.title}
+                </a>
               ))}
-            </ul>
-          </div>
-
-          {/* Courses */}
-          <div>
-            <p className="font-medium">📘 Courses:</p>
-            <ul className="ml-4 list-disc">
               {data.courses.map((c, idx) => (
-                <li key={idx}>
-                  <a
-                    href={c.link}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-green-600 hover:underline"
-                  >
-                    {c.title}
-                  </a>
-                </li>
+                <a key={idx} href={c.link} target="_blank" rel="noopener noreferrer"
+                  className="text-xs px-3 py-1.5 rounded-lg bg-blue-50 text-blue-700 font-medium hover:bg-blue-100 transition-colors">
+                  ↗ {c.title}
+                </a>
               ))}
-            </ul>
+            </div>
           </div>
-
-        </div>
-      ))}
+        ))}
+      </div>
     </div>
   );
 }
